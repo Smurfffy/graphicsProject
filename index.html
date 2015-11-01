@@ -8,8 +8,35 @@
     <script type="text/javascript">
        var c = document.getElementById("gameCanvas");
         var ctx = c.getContext("2d");
-        ctx.fillStyle = "#FF0000";
-        ctx.fillRect(5,5,20,20);
+        ctx.fillStyle = "rgb(255, 0, 0)";
+        
+        var snake = {
+            x: 5
+            , y: 5
+          };
+        
+        
+        function drawSnake() {
+            //ctx.clearRect(0,0,canvas.width,canvas.height);
+            //ctx.beginPath();
+            ctx.fillRect(snake.x ,snake.y,20,20);
+            //ctx.fill();
+          }
+        
+        window.addEventListener("keypress", function(event) { 
+            if (event.keyCode == 39)
+              snake.x += 5;
+            else if (event.keyCode == 37)
+              snake.x -= 5;
+            else if (event.keyCode == 38)
+              snake.y -= 5;
+            else if (event.keyCode == 40)
+              snake.y += 5;
+
+            drawSnake();
+          });
+        
+       drawSnake();
     </script>
   </body>
 </html>
