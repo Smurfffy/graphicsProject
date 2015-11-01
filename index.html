@@ -17,7 +17,11 @@
         
         
         function drawSnake() {
-            ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
+            if(snake.x >= 400 || snake.x <= -1 || snake.y >= 400 || snake.y <= -1) {                  
+                snake.x = 5;
+                snake.y = 5;
+            }
+            ctx.clearRect(0,0, 400, 400);
             ctx.fillRect(snake.x ,snake.y,20,20);
           }
         
