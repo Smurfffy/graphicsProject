@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style type="text/css"></style>
+    <style type="text/css">  
+        canvas {
+            border: 1px solid black;
+        }
+        
+      </style>
   </head>
   <body>
-    <canvas id = "gameCanvas" width="400" height="400" style = "border:1px solid #000000;"></canvas>
+    <canvas id = "gameCanvas" width="400" height="400"></canvas>
     <script type="text/javascript">
        var c = document.getElementById("gameCanvas");
         var ctx = c.getContext("2d");
@@ -13,8 +18,22 @@
         var snake = {
             x: 5
             , y: 5
-          };
+        };
         
+        var food = {
+            x: Math.round(Math.random()*(400)), 
+            y: Math.round(Math.random()*(400)),
+            width: 20,
+            height: 20
+        };
+        
+        
+        function init(){
+            drawSnake();
+            drawFood();
+            
+        }
+        init();
         
         function drawSnake() {
             if(snake.x >= 400 || snake.x <= -1 || snake.y >= 400 || snake.y <= -1) {                  
@@ -23,7 +42,13 @@
             }
             ctx.clearRect(0,0, 400, 400);
             ctx.fillRect(snake.x ,snake.y,20,20);
+            
           }
+        
+        function drawFood(){
+           ctx.fillStyle = "rgb(255, 0, 0)";
+           ctx.fillRect(food.x ,food.y,food.width,food.height); 
+        }
         
         window.addEventListener("keydown", function(event) { 
             if (event.keyCode == 39)
@@ -36,9 +61,9 @@
               snake.y += 5;
 
             drawSnake();
+            drawFood();
           });
         
-       drawSnake();
     </script>
   </body>
 </html>
