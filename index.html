@@ -36,7 +36,7 @@
         init();
         
         function drawSnake() {
-            if(snake.x >= 400 || snake.x <= -1 || snake.y >= 400 || snake.y <= -1) {                  
+            if(snake.x >= 400 || snake.x <= -3 || snake.y >= 400 || snake.y <= -3) {                  
                 snake.x = 5;
                 snake.y = 5;
             }
@@ -44,14 +44,21 @@
                 food.x = Math.round(Math.random()*(400));
                 food.y = Math.round(Math.random()*(400));
             }
+            ctx.beginPath();
             ctx.clearRect(0,0, 400, 400);
             ctx.fillRect(snake.x ,snake.y,20,20);
+            ctx.stroke();
+            
+            snake.x += 1;
+            
+            window.requestAnimationFrame(drawSnake);
             
           }
         
         function drawFood(){
            ctx.fillStyle = "rgb(255, 0, 0)";
            ctx.fillRect(food.x ,food.y,food.width,food.height); 
+           window.requestAnimationFrame(drawFood);
         }
         
         window.addEventListener("keydown", function(event) { 
