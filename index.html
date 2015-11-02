@@ -41,8 +41,8 @@
                 snake.y = 5;
             }
             if (snake.x == food.x && snake.y == food.y){
-                snake.x = 5;
-                snake.y = 5;
+                food.x = Math.round(Math.random()*(400));
+                food.y = Math.round(Math.random()*(400));
             }
             ctx.clearRect(0,0, 400, 400);
             ctx.fillRect(snake.x ,snake.y,20,20);
