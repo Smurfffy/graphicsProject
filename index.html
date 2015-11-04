@@ -13,11 +13,12 @@
     <script type="text/javascript">
        var c = document.getElementById("gameCanvas");
         var ctx = c.getContext("2d");
-        ctx.fillStyle = "rgb(255, 0, 0)";
         
         var snake = {
             x: 5
-            , y: 5
+            , y: 5,
+            width: 20,
+            height: 20
         };
         
         var food = {
@@ -27,7 +28,6 @@
             height: 20
         };
         
-        
         function init(){
             drawSnake();
             drawFood();
@@ -36,20 +36,27 @@
         init();
         
         function drawSnake() {
-            if(snake.x >= 400 || snake.x <= -3 || snake.y >= 400 || snake.y <= -3) {                  
-                snake.x = 5;
-                snake.y = 5;
+            if(snake.x <= -1) {
+                snake.x = snake.x +1;
             }
-            if (snake.x == food.x && snake.y == food.y){
-                food.x = Math.round(Math.random()*(400));
-                food.y = Math.round(Math.random()*(400));
+            if(snake.x >= 380) {
+                snake.x = snake.x -1;
+            }
+            if(snake.y <= -1) {
+                snake.y = snake.y +1;
+            }
+            if(snake.y >= 380) {
+                snake.y = snake.y -1;
+            }
+            if(snake.x < food.x + food.width && snake.x + snake.width > food.x && snake.y < food.y + food.height && snake.y + snake.height > food.y) {                  
+                food.x = Math.round(Math.random()*(380));
+                food.y = Math.round(Math.random()*(380));
             }
             ctx.beginPath();
             ctx.clearRect(0,0, 400, 400);
-            ctx.fillRect(snake.x ,snake.y,20,20);
+            ctx.fillStyle = "rgb(255, 0, 0)";
+            ctx.fillRect(snake.x ,snake.y,snake.width,snake.height);
             ctx.stroke();
-            
-            snake.x += 1;
             
             window.requestAnimationFrame(drawSnake);
             
@@ -63,13 +70,13 @@
         
         window.addEventListener("keydown", function(event) { 
             if (event.keyCode == 39)
-              snake.x += 1;
+              snake.x += 5;
             else if (event.keyCode == 37)
-              snake.x -= 1;
+              snake.x -= 5;
             else if (event.keyCode == 38)
-              snake.y -= 1;
+              snake.y -= 5;
             else if (event.keyCode == 40)
-              snake.y += 1;
+              snake.y += 5;
 
             drawSnake();
             drawFood();
