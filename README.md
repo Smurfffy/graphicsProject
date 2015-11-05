@@ -1,4 +1,8 @@
-This is my Graphics project canvas game.
+<h1>Catch Game</h1>
+
+*By Alan Murphy*
+
+This is my Graphics project game.
 
 The objective of the game is to collect items with the User Square. The more items you collect the bigger the controlled square and the items becomes making the game easier with the more you collect. A score is added and displayed to you after 30 seconds of the game.
 
