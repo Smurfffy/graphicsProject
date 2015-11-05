@@ -42,14 +42,14 @@
         
         //function to create the game
         function init(){
-            drawSnake();
-            drawFood();
+            drawUser();
+            drawItem();
             
         }
         init();
         
         //function to draw snake on the canvas
-        function drawSnake() {
+        function drawUser() {
             //if statments for collision with the user sqaure and canvas
             if(user.x <= -1) {
                 user.x = user.x +1;
@@ -81,15 +81,15 @@
             ctx.fillRect(user.x ,user.y,user.width,user.height);
             ctx.stroke();
             
-            window.requestAnimationFrame(drawSnake);
+            window.requestAnimationFrame(drawUser);
             
           }
         
-        function drawFood(){
+        function drawItem(){
             //draws the item square
            ctx.fillStyle = "rgb(0, 255, 0)";
            ctx.fillRect(item.x ,item.y,item.width,item.height); 
-           window.requestAnimationFrame(drawFood);
+           window.requestAnimationFrame(drawItem);
         }
         
         // function to control user square with up, left, down and right arrow keys
@@ -103,8 +103,8 @@
             else if (event.keyCode == 40)
               user.y += 5;
 
-            drawSnake();
-            drawFood();
+            drawUser();
+            drawItem();
           });
         
     </script>
