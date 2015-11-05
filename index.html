@@ -39,13 +39,13 @@
             if(snake.x <= -1) {
                 snake.x = snake.x +1;
             }
-            if(snake.x >= 380) {
+            if(snake.x >= 381) {
                 snake.x = snake.x -1;
             }
             if(snake.y <= -1) {
                 snake.y = snake.y +1;
             }
-            if(snake.y >= 380) {
+            if(snake.y >= 381) {
                 snake.y = snake.y -1;
             }
             if(snake.x < food.x + food.width && snake.x + snake.width > food.x && snake.y < food.y + food.height && snake.y + snake.height > food.y) {                  
