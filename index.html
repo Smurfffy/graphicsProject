@@ -14,7 +14,7 @@
        var c = document.getElementById("gameCanvas");
         var ctx = c.getContext("2d");
         
-        var snake = {
+        var user = {
             x: 5
             , y: 5,
             width: 20,
@@ -36,30 +36,30 @@
         init();
         
         function drawSnake() {
-            if(snake.x <= -1) {
-                snake.x = snake.x +1;
+            if(user.x <= -1) {
+                user.x = user.x +1;
             }
-            if(snake.x >= 381) {
-                snake.x = snake.x -1;
+            if(user.x >= 381) {
+                user.x = user.x -1;
             }
-            if(snake.y <= -1) {
-                snake.y = snake.y +1;
+            if(user.y <= -1) {
+                user.y = user.y +1;
             }
-            if(snake.y >= 381) {
-                snake.y = snake.y -1;
+            if(user.y >= 381) {
+                user.y = user.y -1;
             }
-            if(snake.x < food.x + food.width && snake.x + snake.width > food.x && snake.y < food.y + food.height && snake.y + snake.height > food.y) {                  
+            if(user.x < food.x + food.width && user.x + user.width > food.x && user.y < food.y + food.height && user.y + user.height > food.y) {                  
                 food.x = Math.round(Math.random()*(380));
                 food.y = Math.round(Math.random()*(380));
-                snake.width += 5;
-                snake.height += 5;
+                user.width += 5;
+                user.height += 5;
                 food.width += 5;
                 food.height += 5;
             }
             ctx.beginPath();
             ctx.clearRect(0,0, 400, 400);
             ctx.fillStyle = "rgb(255, 0, 0)";
-            ctx.fillRect(snake.x ,snake.y,snake.width,snake.height);
+            ctx.fillRect(user.x ,user.y,user.width,user.height);
             ctx.stroke();
             
             window.requestAnimationFrame(drawSnake);
@@ -74,13 +74,13 @@
         
         window.addEventListener("keydown", function(event) { 
             if (event.keyCode == 39)
-              snake.x += 5;
+              user.x += 5;
             else if (event.keyCode == 37)
-              snake.x -= 5;
+              user.x -= 5;
             else if (event.keyCode == 38)
-              snake.y -= 5;
+              user.y -= 5;
             else if (event.keyCode == 40)
-              snake.y += 5;
+              user.y += 5;
 
             drawSnake();
             drawFood();
