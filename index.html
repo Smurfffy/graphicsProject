@@ -16,12 +16,14 @@
         
         var score = 0;
         
+        // Function to display message when time is up
         setTimeout(function(){ 
             alert("GameOver. Score: " + score +
                  " Refresh page to try again");
             init();
         }, 30000);
         
+        //The user contorlled item
         var user = {
             x: 5
             , y: 5,
@@ -29,13 +31,16 @@
             height: 20
         };
         
+        //The user collected items
         var item = {
+            //x and y set to random coordinates
             x: Math.round(Math.random()*(380)), 
             y: Math.round(Math.random()*(380)),
             width: 10,
             height: 10
         };
         
+        //function to create the game
         function init(){
             drawSnake();
             drawFood();
@@ -43,7 +48,9 @@
         }
         init();
         
+        //function to draw snake on the canvas
         function drawSnake() {
+            //if statments for collision with the user sqaure and canvas
             if(user.x <= -1) {
                 user.x = user.x +1;
             }
@@ -56,15 +63,18 @@
             if(user.y >= 381) {
                 user.y = user.y -1;
             }
-            if(user.x < item.x + item.width && user.x + user.width > item.x && user.y < item.y + item.height && user.y + user.height > item.y) {                  
+            // if statment for collision with user and items
+            if(user.x < item.x + item.width && user.x + user.width > item.x && user.y < item.y + item.height && user.y + user.height > item.y) {                  //items randomly spawn after collision
                 item.x = Math.round(Math.random()*(380));
                 item.y = Math.round(Math.random()*(380));
+                //user and items grow in size on collision
                 user.width += 5;
                 user.height += 5;
                 item.width += 5;
                 item.height += 5;
                 score += 1;
             }
+            //draws the user square
             ctx.beginPath();
             ctx.clearRect(0,0, 400, 400);
             ctx.fillStyle = "rgb(255, 0, 0)";
@@ -76,11 +86,13 @@
           }
         
         function drawFood(){
+            //draws the item square
            ctx.fillStyle = "rgb(0, 255, 0)";
            ctx.fillRect(item.x ,item.y,item.width,item.height); 
            window.requestAnimationFrame(drawFood);
         }
         
+        // function to control user square with up, left, down and right arrow keys
         window.addEventListener("keydown", function(event) { 
             if (event.keyCode == 39)
               user.x += 5;
