@@ -51,6 +51,10 @@
             if(snake.x < food.x + food.width && snake.x + snake.width > food.x && snake.y < food.y + food.height && snake.y + snake.height > food.y) {                  
                 food.x = Math.round(Math.random()*(380));
                 food.y = Math.round(Math.random()*(380));
+                snake.width += 5;
+                snake.height += 5;
+                food.width += 5;
+                food.height += 5;
             }
             ctx.beginPath();
             ctx.clearRect(0,0, 400, 400);
