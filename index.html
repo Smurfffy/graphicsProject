@@ -21,7 +21,7 @@
             height: 20
         };
         
-        var food = {
+        var item = {
             x: Math.round(Math.random()*(400)), 
             y: Math.round(Math.random()*(400)),
             width: 10,
@@ -48,13 +48,13 @@
             if(user.y >= 381) {
                 user.y = user.y -1;
             }
-            if(user.x < food.x + food.width && user.x + user.width > food.x && user.y < food.y + food.height && user.y + user.height > food.y) {                  
-                food.x = Math.round(Math.random()*(380));
-                food.y = Math.round(Math.random()*(380));
+            if(user.x < item.x + item.width && user.x + user.width > item.x && user.y < item.y + item.height && user.y + user.height > item.y) {                  
+                item.x = Math.round(Math.random()*(380));
+                item.y = Math.round(Math.random()*(380));
                 user.width += 5;
                 user.height += 5;
-                food.width += 5;
-                food.height += 5;
+                item.width += 5;
+                item.height += 5;
             }
             ctx.beginPath();
             ctx.clearRect(0,0, 400, 400);
@@ -68,7 +68,7 @@
         
         function drawFood(){
            ctx.fillStyle = "rgb(0, 255, 0)";
-           ctx.fillRect(food.x ,food.y,food.width,food.height); 
+           ctx.fillRect(item.x ,item.y,item.width,item.height); 
            window.requestAnimationFrame(drawFood);
         }
         
